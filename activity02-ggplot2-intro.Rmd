@@ -114,7 +114,7 @@ For this boxplot, we want to double-encode the variable `species` to not only th
 In the code chunk below, add the missing code (i.e., replacing the `___`) to have our comparative boxplots also include some coloring.
 
 ```{r boxplot-colors}
-ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species, ___ = ___)) +
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species, fill = species)) +
   geom_boxplot()
 ```
 
@@ -129,8 +129,8 @@ We can create something similar with jitterplots using `geom_jitter`.
 In the code chunk below, complete it so that it produces a jitterplot.
 
 ```{r jitterplot}
-ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species, ___ = ___)) +
-  ___()
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species, fill = species)) +
+  geom_jitter()
 ```
 
 Comment on the strengths of the boxplot compared to the jitterplot and vice versa.
@@ -145,7 +145,7 @@ Then, go to GitHub and compare/contrast your `activity02-ggplot2-intro.Rmd` and 
 Which is easier to read?
 Which looks more professional?
 
-**Response**:
+**Response**: I think the .md file is much easier to read and looks more professional. The .Rmd file looks like fresh code whereas the .md file looks complete and presentable.
 
 
 Now, wouldn't it be nice if we could combine these two plots so that we get the benefits of both!?!
@@ -156,6 +156,9 @@ Try doing the following in the code chunk below with my *hint*:
 - *Add* another geometry layer for the jitterplot.
 
 ```{r box-jitter-combined}
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species, fill = species)) +
+   geom_boxplot() + 
+   geom_jitter()
 
 ```
 
@@ -163,7 +166,7 @@ Play around with doing the jitterplot laid over the boxplot and the boxplot laid
 Which do you prefer?
 Why?
 
-**Response**:
+**Response**: I prefer the jitterplot laid over the boxplots because then it seems like when you have a slope line under a scatterplot; the boxplots guide the jitterplots and help you identify trends more.
 
 
 This is getting us closer to one of my favorite plots - the raincloud plot.
@@ -176,6 +179,9 @@ In the code chunk below, explore different methods to try to create this plot.
 A hint, all `geom_*` have a `mapping` argument.
 
 ```{r jitter-colored-only}
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species)) +
+    geom_boxplot() + 
+    geom_jitter(aes (color = species))
 
 ```
 
@@ -183,7 +189,7 @@ In the above code chunk, continue to play around with having the aesthetics mapp
 For example, how does having all of them mapped in the `ggplot` call compared to having these instead mapped in the `geom_boxplot` layer?
 Comment on what you notice.
 
-**Response**:
+**Response**: When you map in the geom_boxplot layer, it creates a key on the right showing which color is which (in addition to the species already noted on the y axis)
 
 
 Knit, stage, commit (with a meaningful commit message),and push everything in your **Git** pane to your GitHub repo.

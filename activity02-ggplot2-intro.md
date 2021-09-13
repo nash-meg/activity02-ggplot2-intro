@@ -150,13 +150,13 @@ code (i.e., replacing the `___`) to have our comparative boxplots also
 include some coloring.
 
 ``` r
-ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species, ___ = ___)) +
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species, fill = species)) +
   geom_boxplot()
 ```
 
-    ## Error: <text>:1:75: unexpected input
-    ## 1: ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species, _
-    ##                                                                               ^
+    ## Warning: Removed 2 rows containing non-finite values (stat_boxplot).
+
+![](activity02-ggplot2-intro_files/figure-gfm/boxplot-colors-1.png)<!-- -->
 
 Now, comment on what you notice from these boxplots.
 
@@ -170,13 +170,13 @@ something similar with jitterplots using `geom_jitter`. In the code
 chunk below, complete it so that it produces a jitterplot.
 
 ``` r
-ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species, ___ = ___)) +
-  ___()
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species, fill = species)) +
+  geom_jitter()
 ```
 
-    ## Error: <text>:1:75: unexpected input
-    ## 1: ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species, _
-    ##                                                                               ^
+    ## Warning: Removed 2 rows containing missing values (geom_point).
+
+![](activity02-ggplot2-intro_files/figure-gfm/jitterplot-1.png)<!-- -->
 
 Comment on the strengths of the boxplot compared to the jitterplot and
 vice versa. That is, what can you easily determine by looking at the
@@ -192,7 +192,9 @@ and compare/contrast your `activity02-ggplot2-intro.Rmd` and
 `activity02-ggplot2-intro.md` files. Which is easier to read? Which
 looks more professional?
 
-**Response**:
+**Response**: I think the .md file is much easier to read and looks more
+professional. The .Rmd file looks like fresh code whereas the .md file
+looks complete and presentable.
 
 Now, wouldn’t it be nice if we could combine these two plots so that we
 get the benefits of both!?! That is, how can we overlay the jitterplot
@@ -202,10 +204,24 @@ my *hint*:
 -   Re-create the boxplot with color that you did above, then
 -   *Add* another geometry layer for the jitterplot.
 
+``` r
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species, fill = species)) +
+   geom_boxplot() + 
+   geom_jitter()
+```
+
+    ## Warning: Removed 2 rows containing non-finite values (stat_boxplot).
+
+    ## Warning: Removed 2 rows containing missing values (geom_point).
+
+![](activity02-ggplot2-intro_files/figure-gfm/box-jitter-combined-1.png)<!-- -->
+
 Play around with doing the jitterplot laid over the boxplot and the
 boxplot laid over the jitterplot. Which do you prefer? Why?
 
-**Response**:
+**Response**: I prefer the jitterplot laid over the boxplots because
+then it seems like when you have a slope line under a scatterplot; the
+boxplots guide the jitterplots and help you identify trends more.
 
 This is getting us closer to one of my favorite plots - the raincloud
 plot. We are not quite ready to create this plot, but we will get there
@@ -219,12 +235,26 @@ default white coloring. In the code chunk below, explore different
 methods to try to create this plot. A hint, all `geom_*` have a
 `mapping` argument.
 
+``` r
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species)) +
+    geom_boxplot() + 
+    geom_jitter(aes (color = species))
+```
+
+    ## Warning: Removed 2 rows containing non-finite values (stat_boxplot).
+
+    ## Warning: Removed 2 rows containing missing values (geom_point).
+
+![](activity02-ggplot2-intro_files/figure-gfm/jitter-colored-only-1.png)<!-- -->
+
 In the above code chunk, continue to play around with having the
 aesthetics mapped in the different layers. For example, how does having
 all of them mapped in the `ggplot` call compared to having these instead
 mapped in the `geom_boxplot` layer? Comment on what you notice.
 
-**Response**:
+**Response**: When you map in the geom\_boxplot layer, it creates a key
+on the right showing which color is which (in addition to the species
+already noted on the y axis)
 
 Knit, stage, commit (with a meaningful commit message),and push
 everything in your **Git** pane to your GitHub repo. Go to GitHub and
