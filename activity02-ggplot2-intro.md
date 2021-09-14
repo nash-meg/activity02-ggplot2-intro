@@ -322,16 +322,38 @@ exploring scatterplots using `{ggplot2}`.
 In the code chunk below, create a scatterplot for the relationship
 between `flipper_length_mm` and `body_mass_g`.
 
+``` r
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = body_mass_g)) +
+   geom_point()
+```
+
+    ## Warning: Removed 2 rows containing missing values (geom_point).
+
+![](activity02-ggplot2-intro_files/figure-gfm/flipper_vs_mass-1.png)<!-- -->
+
 Describe any patterns that you notice.
 
-**Response**:
+**Response**: As body mass (in grams) increases, the flipper length (in
+mm) also increases; the association is positive.
 
 Recreate your scatterplot in the code chunk below; however, *map*
 `species` to the `color` and `shape` aesthetics.
 
+``` r
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = body_mass_g, color = species, shape = species)) +
+  geom_point()
+```
+
+    ## Warning: Removed 2 rows containing missing values (geom_point).
+
+![](activity02-ggplot2-intro_files/figure-gfm/flipper_vs_mass_with_species-1.png)<!-- -->
+
 Describe any patterns that you notice.
 
-**Response**:
+**Response**: The Gentoo species is by far the highest on average in
+body mass and flipper length. On the other hand, the Adelie and
+Chinstrap species are only on the bottom left of the graph with smaller
+body masses and flipper length on average.
 
 The previous plot looked great except even in this rather small dataset
 (n = 344), there might are a number of points overlapping. In the R code
@@ -340,9 +362,21 @@ aesthetic) of `size` (using some value larger than zero) and `alpha`
 (using some value between 0 and 1) to make your previous plot more
 effective.
 
+``` r
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = body_mass_g, color = species, shape = species, size = 2, alpha = 0.5)) +
+   geom_point()
+```
+
+    ## Warning: Removed 2 rows containing missing values (geom_point).
+
+![](activity02-ggplot2-intro_files/figure-gfm/flipper_vs_mass_with_size_alpha-1.png)<!-- -->
+
 Discuss the decisions you made to help your plot be easier to read.
 
-**Response**:
+**Response**: Making the points larger and slightly transparent helped
+to easier see where trends are. This is especially evident in the very
+center of the graph where it transitions from the green/red to the blue
+points as the smaller points were easy to miss.
 
 Knit, stage, commit (with a meaningful commit message),and push
 everything in your **Git** pane to your GitHub repo. Go to GitHub and
