@@ -207,20 +207,26 @@ Create graphs to explore the relationship between `bill_length_mm` and each of `
 Using these three graphs to discuss which of these three categorical variables seems to be contributing more to these two peaks and explain your reasoning.
 
 ```{r bill_length_by_species}
+ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = species)) +
+   geom_boxplot()
 
 ```
 
 
 ```{r bill_length_by_sex}
+ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = sex)) +
+   geom_boxplot()
 
 ```
 
 
 ```{r bill_length_by_island}
+ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = island)) +
+   geom_boxplot()
 
 ```
 
-**Response**:
+**Response**: I think species is contributing most to the two peaks since the box plots for that variable are centered around 39 and 46, where as the sex and island boxplots are pretty spread out across the x axis (not clumped over certian values)
 
 
 Knit, stage, commit (with a meaningful commit message),and push everything in your **Git** pane to your GitHub repo.

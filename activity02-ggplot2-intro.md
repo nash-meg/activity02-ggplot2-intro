@@ -277,7 +277,37 @@ graphs). Using these three graphs to discuss which of these three
 categorical variables seems to be contributing more to these two peaks
 and explain your reasoning.
 
-**Response**:
+``` r
+ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = species)) +
+   geom_boxplot()
+```
+
+    ## Warning: Removed 2 rows containing non-finite values (stat_boxplot).
+
+![](activity02-ggplot2-intro_files/figure-gfm/bill_length_by_species-1.png)<!-- -->
+
+``` r
+ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = sex)) +
+   geom_boxplot()
+```
+
+    ## Warning: Removed 2 rows containing non-finite values (stat_boxplot).
+
+![](activity02-ggplot2-intro_files/figure-gfm/bill_length_by_sex-1.png)<!-- -->
+
+``` r
+ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = island)) +
+   geom_boxplot()
+```
+
+    ## Warning: Removed 2 rows containing non-finite values (stat_boxplot).
+
+![](activity02-ggplot2-intro_files/figure-gfm/bill_length_by_island-1.png)<!-- -->
+
+**Response**: I think species is contributing most to the two peaks
+since the box plots for that variable are centered around 39 and 46,
+where as the sex and island boxplots are pretty spread out across the x
+axis (not clumped over certian values)
 
 Knit, stage, commit (with a meaningful commit message),and push
 everything in your **Git** pane to your GitHub repo. Go to GitHub and
